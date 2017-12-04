@@ -12,19 +12,21 @@
 #define C   A2
 #define D   A3
 
+// matrix dimensions
 #define COLS 32
 #define ROWS 32
 
-RGBmatrixPanel matrix(A, B, C, D, CLK, LAT, OE, false);
+// colors
+#define WHITE 4226
+#define BROWN 16512
+#define GREEN 4480
+#define RED 4096
+#define GOLD 25120
+#define BLACK 65535
+#define BLUE 2
+#define PINK 4098
 
-const uint16_t WHITE = matrix.ColorHSV( 0, 0, 75, true);
-const uint16_t BROWN = matrix.ColorHSV( 120, 255, 150, true);
-const uint16_t GREEN = matrix.ColorHSV( 350, 255, 125, true);
-const uint16_t RED = matrix.ColorHSV( 150, 255, 100, true);
-const uint16_t GOLD = matrix.ColorHSV( 220, 200, 175, true);
-const uint16_t BLACK = matrix.Color333( 255, 255, 255 );
-const uint16_t BLUE = 2;
-const uint16_t PINK = 4098;
+RGBmatrixPanel matrix(A, B, C, D, CLK, LAT, OE, false);
 
 void initTree() {
   matrix.drawRect( 0, ROWS - 2, COLS, 2, WHITE );               // ground
