@@ -79,7 +79,6 @@ void snow() {
   matrix.drawPixel(3, 28, matrix.Color333(0,0,0));
   matrix.drawPixel(1, 25, matrix.Color333(0,0,0));
   matrix.drawPixel(3, 17, matrix.Color333(0,0,0));
-  matrix.drawPixel(28, 30, matrix.Color333(0,0,0));
   matrix.drawPixel(31, 21, matrix.Color333(0,0,0));
   matrix.drawPixel(26, 27, matrix.Color333(0,0,0));
 
@@ -130,7 +129,6 @@ void snow() {
   matrix.drawPixel(3, 28, WHITE);
   matrix.drawPixel(1, 25, WHITE);
   matrix.drawPixel(3, 17, WHITE);
-  matrix.drawPixel(28, 30, WHITE);
   matrix.drawPixel(31, 21, WHITE);
   matrix.drawPixel(26, 27, WHITE);
 }
