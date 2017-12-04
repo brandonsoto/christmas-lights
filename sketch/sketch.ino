@@ -1,4 +1,3 @@
-
 #include <Adafruit_GFX.h>   // Core graphics library
 #include <RGBmatrixPanel.h> // Hardware-specific library
 
@@ -13,7 +12,7 @@
 #define D   A3
 
 // matrix dimensions
-#define COLS 32
+#define COLUMNS 32
 #define ROWS 32
 
 // colors
@@ -25,24 +24,115 @@
 #define BLACK 65535
 #define BLUE 2
 #define PINK 4098
+#define TOTAL_COLORS 5
 
 RGBmatrixPanel matrix(A, B, C, D, CLK, LAT, OE, false);
 
+long colors[TOTAL_COLORS] = {
+  matrix.Color888(255, 0, 0 ),
+  matrix.Color888(125, 0, 0 ),
+  matrix.Color888(0, 0, 255 ), GOLD, PINK };
+
 void initTree() {
-  matrix.drawRect( 0, ROWS - 2, COLS, 2, WHITE );               // ground
-  matrix.fillRect( (COLS / 2 - 2), 22, 5, 9, BROWN );           // tree trunk
-  matrix.fillTriangle( ( COLS / 2 ), 1, 5, 21, 27, 21, GREEN ); // tree
-  matrix.fillCircle( ( COLS / 2 ), 1, 1, GOLD );                // topper
+  matrix.drawRect( 0, ROWS - 2, COLUMNS, 2, WHITE );               // ground
+  matrix.fillRect( (COLUMNS / 2 - 2), 22, 5, 9, BROWN );           // tree trunk
+  matrix.fillTriangle( ( COLUMNS / 2 ), 1, 5, 21, 27, 21, GREEN ); // tree
+  matrix.fillCircle( ( COLUMNS / 2 ), 1, 1, GOLD );                // topper
 }
 
-void initDecorations() {
-    matrix.fillCircle( 20, 20, 1, RED );
-    matrix.fillCircle( 15, 5, 1, BLUE );
-    matrix.fillCircle( 19, 12, 1, PINK );
+void lights() {
+  int start = 14;
+
+  for ( int x = 0; x < 5; x+=2 ) {
+      matrix.drawPixel(start + x, 5, colors[random(TOTAL_COLORS)]);
+  }
+
+  start = 11;
+
+  for ( int x = 0; x < 10; x+=2 ) {
+      matrix.drawPixel(start + x, 10, colors[random(TOTAL_COLORS)]);
+  }
+
+  start = 9;
+
+  for ( int x = 0; x < 15; x+=2 ) {
+      matrix.drawPixel(start + x, 15, colors[random(TOTAL_COLORS)]);
+  }
+
+  start = 6;
+
+  for ( int x = 0; x < 22; x+=2 ) {
+      matrix.drawPixel(start + x, 20, colors[random(TOTAL_COLORS)]);
+  }
 }
 
 void snow() {
-  // TODO: implement
+  // TODO: can we not use the brute force method here? Creating an array uses too much memory :(
+  matrix.drawPixel(2, 0, matrix.Color333(0,0,0));
+  matrix.drawPixel(28, 4, matrix.Color333(0,0,0));
+  matrix.drawPixel(20, 6, matrix.Color333(0,0,0));
+  matrix.drawPixel(8, 1, matrix.Color333(0,0,0));
+  matrix.drawPixel(0, 9, matrix.Color333(0,0,0));
+  matrix.drawPixel(7, 12, matrix.Color333(0,0,0));
+  matrix.drawPixel(10, 9, matrix.Color333(0,0,0));
+  matrix.drawPixel(28, 8, matrix.Color333(0,0,0));
+  matrix.drawPixel(3, 28, matrix.Color333(0,0,0));
+  matrix.drawPixel(1, 25, matrix.Color333(0,0,0));
+  matrix.drawPixel(3, 17, matrix.Color333(0,0,0));
+  matrix.drawPixel(28, 30, matrix.Color333(0,0,0));
+  matrix.drawPixel(31, 21, matrix.Color333(0,0,0));
+  matrix.drawPixel(26, 27, matrix.Color333(0,0,0));
+
+  matrix.drawPixel(0, 0, WHITE);
+  matrix.drawPixel(30, 0, WHITE);
+  matrix.drawPixel(22, 1, WHITE);
+  matrix.drawPixel(10, 2, WHITE);
+  matrix.drawPixel(3, 5, WHITE);
+  matrix.drawPixel(4, 7, WHITE);
+  matrix.drawPixel(8, 9, WHITE);
+  matrix.drawPixel(24, 8, WHITE);
+  matrix.drawPixel(28, 10, WHITE);
+  matrix.drawPixel(3, 14, WHITE);
+  matrix.drawPixel(2, 28, WHITE);
+  matrix.drawPixel(4, 18, WHITE);
+  matrix.drawPixel(6, 25, WHITE);
+  matrix.drawPixel(22, 24, WHITE);
+  matrix.drawPixel(30, 28, WHITE);
+  matrix.drawPixel(28, 18, WHITE);
+
+  delay(250);
+
+  matrix.drawPixel(0, 0, matrix.Color333(0,0,0));
+  matrix.drawPixel(30, 0, matrix.Color333(0,0,0));
+  matrix.drawPixel(22, 1, matrix.Color333(0,0,0));
+  matrix.drawPixel(10, 2, matrix.Color333(0,0,0));
+  matrix.drawPixel(3, 5, matrix.Color333(0,0,0));
+  matrix.drawPixel(4, 7, matrix.Color333(0,0,0));
+  matrix.drawPixel(8, 9, matrix.Color333(0,0,0));
+  matrix.drawPixel(24, 8, matrix.Color333(0,0,0));
+  matrix.drawPixel(28, 10, matrix.Color333(0,0,0));
+  matrix.drawPixel(3, 14, matrix.Color333(0,0,0));
+  matrix.drawPixel(2, 28, matrix.Color333(0,0,0));
+  matrix.drawPixel(4, 18, matrix.Color333(0,0,0));
+  matrix.drawPixel(6, 25, matrix.Color333(0,0,0));
+  matrix.drawPixel(22, 24, matrix.Color333(0,0,0));
+  matrix.drawPixel(30, 28, matrix.Color333(0,0,0));
+  matrix.drawPixel(28, 18, matrix.Color333(0,0,0));
+
+  matrix.drawPixel(2, 0, WHITE);
+  matrix.drawPixel(28, 4, WHITE);
+  matrix.drawPixel(20, 6, WHITE);
+  matrix.drawPixel(8, 1, WHITE);
+  matrix.drawPixel(0, 9, WHITE);
+  matrix.drawPixel(7, 12, WHITE);
+  matrix.drawPixel(10, 9, WHITE);
+  matrix.drawPixel(28, 8, WHITE);
+  matrix.drawPixel(3, 28, WHITE);
+  matrix.drawPixel(1, 25, WHITE);
+  matrix.drawPixel(3, 17, WHITE);
+  matrix.drawPixel(28, 30, WHITE);
+  matrix.drawPixel(31, 21, WHITE);
+  matrix.drawPixel(26, 27, WHITE);
 }
 
 void setup() {
@@ -52,9 +142,10 @@ void setup() {
   matrix.begin();
   
   initTree();
-  initDecorations();
 }
 
 void loop() {
   snow();
+  lights();
+  delay(400);
 }
