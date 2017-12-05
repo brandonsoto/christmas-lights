@@ -28,10 +28,13 @@
 
 RGBmatrixPanel matrix(A, B, C, D, CLK, LAT, OE, false);
 
-long colors[TOTAL_COLORS] = {
+const long COLORS[TOTAL_COLORS] = {
   matrix.Color888(255, 0, 0 ),
   matrix.Color888(125, 0, 0 ),
-  matrix.Color888(0, 0, 255 ), GOLD, PINK };
+  matrix.Color888(0, 0, 255 ),
+  GOLD,
+  PINK
+};
 
 void initTree() {
   matrix.drawRect( 0, ROWS - 2, COLUMNS, 2, WHITE );               // ground
@@ -47,7 +50,7 @@ void lights() {
     const int startX = start - ( 3 * i );
     const int maxX = (startX + ( i + 1 ) * 5);
     for ( int x = startX; x < maxX; x+=2 ) {
-      matrix.drawPixel(x, y, colors[random(TOTAL_COLORS)]);
+      matrix.drawPixel(x, y, COLORS[random(TOTAL_COLORS)]);
     }
   }
 }
