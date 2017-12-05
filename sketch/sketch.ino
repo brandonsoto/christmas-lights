@@ -41,28 +41,14 @@ void initTree() {
 }
 
 void lights() {
-  int start = 14;
+  const int start = 14;
 
-  for ( int x = 0; x < 5; x+=2 ) {
-      matrix.drawPixel(start + x, 5, colors[random(TOTAL_COLORS)]);
-  }
-
-  start = 11;
-
-  for ( int x = 0; x < 10; x+=2 ) {
-      matrix.drawPixel(start + x, 10, colors[random(TOTAL_COLORS)]);
-  }
-
-  start = 9;
-
-  for ( int x = 0; x < 15; x+=2 ) {
-      matrix.drawPixel(start + x, 15, colors[random(TOTAL_COLORS)]);
-  }
-
-  start = 6;
-
-  for ( int x = 0; x < 22; x+=2 ) {
-      matrix.drawPixel(start + x, 20, colors[random(TOTAL_COLORS)]);
+  for ( int i = 0, y = 5; i < 4; i++, y+=5 ) {
+    const int startX = start - ( 3 * i );
+    const int maxX = (startX + ( i + 1 ) * 5);
+    for ( int x = startX; x < maxX; x+=2 ) {
+      matrix.drawPixel(x, y, colors[random(TOTAL_COLORS)]);
+    }
   }
 }
 
@@ -136,9 +122,9 @@ void snow() {
 void setup() {
   Serial.begin(9600);
   randomSeed(analogRead(0));
-  
+
   matrix.begin();
-  
+
   initTree();
 }
 
