@@ -49,7 +49,7 @@ void lights() {
   for ( int i = 0, y = 5; i < 4; i++, y+=5 ) {
     const int startX = start - ( 3 * i );
     const int maxX = (startX + ( i + 1 ) * 5);
-    for ( int x = startX; x < maxX; x+=2 ) {
+    for ( int x = startX; x <= maxX; x+=2 ) {
       matrix.drawPixel(x, y, COLORS[random(TOTAL_COLORS)]);
     }
   }
